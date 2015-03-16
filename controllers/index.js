@@ -1,10 +1,5 @@
 
-
-
 module.exports = function(app) {
 
-  require('./todos')(app);
-
-
+  require('./todos_controller');
 }
-
