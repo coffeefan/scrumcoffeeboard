@@ -1,0 +1,17 @@
+extends ../layout
+block content
+    h1 Posts
+    p Welcome to my blog
+    p= 'There are ' + posts.length + ' entries'
+    ul
+        each post in posts
+            li
+                p= post.title
+                    &nbsp;
+                    a(href='/posts/'+post.id) Anzeigen
+                    &nbsp;
+                    a(href='/posts/'+post.id+"/delete") Delete
+    p
+        a(href='/posts/new') Neuer Post
+    p
+        a(href='/posts/api') Zu meiner API

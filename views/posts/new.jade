@@ -1,0 +1,14 @@
+extends ../layout
+block content
+    h1 New Post
+    p=status
+    div.loginbox
+        form(name="newpost", action="/posts/new", method="post")
+            div(data-role='fieldcontain')
+                label(for='title') title
+                    input(id='title',type='text',value='',placeholder='Titel',name='title')
+            div(data-role='fieldcontain')
+                label(for='text') text
+                    textarea(id="text", name="text")
+            div(data-role='fieldcontain')
+                input(type='submit',value='Speichern')
