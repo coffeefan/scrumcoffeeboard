@@ -1,10 +1,16 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/boostrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='javascript', href='/javascripts/boostrap.min.js')
-    link(rel='javascript', href='/javascripts/backbone.js')
-  body
-    block content
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/bootstrap-themes.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='javascript', href='/javascripts/boostrap.min.js')
+        link(rel='javascript', href='/javascripts/backbone.js')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    body
+        include header
+
+        block content
+
+        include footer
