@@ -2,7 +2,7 @@ doctype html
 html
     head
         script#item-template(type='text/template').
-                    <div class="view">
+                    <div class="view sortable-item">
                       <input class="toggle" type="checkbox" <%= status ? 'checked="checked"' : '' %> />
                       <%= title %>
                       </div>
@@ -12,6 +12,7 @@ html
         link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
         script(src='/javascripts/lib/jquery.js')
+        script(src='/javascripts/lib/jquery-ui.min.js')
         script(src='/javascripts/lib/bootstrap.min.js')
         script(src='/javascripts/lib/underscore.js')
         script(src='/javascripts/lib/backbone.js')
