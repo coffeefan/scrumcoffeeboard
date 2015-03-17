@@ -1,6 +1,12 @@
 doctype html
 html
     head
+        script#item-template(type='text/template').
+                    <div class="view">
+                      <input class="toggle" type="checkbox" <%= status ? 'checked="checked"' : '' %> />
+                      <%= title %>
+                      </div>
+                      <input class="edit" type="text" value="<%- title %>"/>
         title= title
         link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
@@ -14,8 +20,10 @@ html
         script(src='/javascripts/models/scrumtask.js')
         script(src='/javascripts/collections/scrumtasks.js')
         script(src='/javascripts/views/scrumview.js')
+        script(src='/javascripts/views/scrumtaskview.js')
 
         script(src='/javascripts/app.js')
+
     body
         include header
 

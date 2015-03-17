@@ -7,6 +7,16 @@ router.route('/').
         var scrumtasks = scrumboard.getAllEntries();
         res.json(scrumtasks);
     });
-
+router.route('/').
+    post(function(req, res, next) {
+        var data=req.body;
+        data.publishedAt=new Date();
+        scrumboard.add(req.body);
+        var response={
+            isok:true,
+            errormessage:''
+        };
+        res.json(response);
+    });
 
 module.exports = router;

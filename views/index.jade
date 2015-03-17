@@ -1,5 +1,35 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    div.container
+        h1= title
+        p Welcome to #{title}
+        #todoapp
+            ul.nav.nav-pills
+                li.all-pill
+                  a(href='#all') All
+
+                li.open-pill
+                  a(href='#open') Open
+
+                li.completed-pill
+                  a(href='#completed') Completed
+
+            input(
+                type='text',
+                placeholder='What needs to be done?',
+                id='new-todo'
+            )
+            input(
+                type='button',
+                value='Add',
+                id='add-item'
+            )
+        .row
+            .col-md-3
+                #list-1.todo
+            .col-md-3
+                #list-2.inprogress
+            .col-md-3
+                #list-3.done
+            .col-md-3

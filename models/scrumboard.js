@@ -5,10 +5,11 @@ var Scrumboard = {
     tasks: [
         {
             id: '1',
-            title: 'foo',
-            text: 'bar',
-            publishedAt: new Date(),
-            state:-1
+            title: '',
+            description:'',
+            status: 1,
+            cost:1,
+            name:''
         }
     ],
     last_id: 1,

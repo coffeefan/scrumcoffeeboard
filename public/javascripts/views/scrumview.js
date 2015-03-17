@@ -12,30 +12,32 @@ app.ScrumView= Backbone.View.extend({
     initialize: function () {
         this.ScrumTaskList =  new app.ScrumTaskList();
 
-        //this.input = $('#new-todo');
-        //this.list = $('#todo-list');
+        this.input = $('#new-todo');
+        this.todolist = $('#todolist');
+        this.inprogresslist = $('#inprogresslist');
+        this.donelist = $('#donelist');
 
-        //this.listenTo(this.todos, 'add', this.addItem);
-        //this.listenTo(this.todos, 'all', this.render);
+        this.listenTo(this.ScrumTaskList, 'add', this.addItem);
+        this.listenTo(this.ScrumTaskList, 'all', this.render);
         // this.listenTo(this.todos, 'reset', this.reload);
         //this.listenTo(this.todos, 'reload', this.reload);
         //scrumtasks = new app.ScrumTaskList();
         this.ScrumTaskList.fetch();
-        var t = this.ScrumTaskList.create({});
-        t.set('title', 'via collection but in the model');
-        t.save();
+        //var t = this.ScrumTaskList.create({});
+        //t.set('title', 'via collection but in the model');
+
 
 
     },
 
     addItem: function (item) {
-        var todoView = new TodoView({ model: item });
-        this.list.append(todoView.render().el);
+        var ScrumTaskView = new app.ScrumTaskView({ model: item });
+        $("#list-"+item.attributes.status).append(ScrumTaskView.render().el);
     },
 
     addAll: function () {
         console.log('addAll');
-        this.todos.each(this.addItem, this);
+        this.ScrumTaskList.each(this.addItem, this);
     },
 
     reload: function() {
@@ -50,27 +52,27 @@ app.ScrumView= Backbone.View.extend({
     },
     createItem: function () {
         if (!this.input.val()) return;
-        this.todos.create({ title: this.input.val() });
+        this.ScrumTaskList.create({ title: this.input.val() });
         this.input.val('');
     },
 
     showOpen: function() {
         console.log('get open Items');
-        this.todos.open();
+        this.ScrumTaskList.open();
         console.log('nr. of items:' + this.todos.length);
         // this.todos.fetch();
         //this.trigger('reload');
     },
     showCompleted: function() {
         console.log('get completed Items');
-        this.todos.completed();
+        this.ScrumTaskList.completed();
         console.log('nr. of items:' + this.todos.length);
         // this.todos.fetch();
         //this.trigger('reload');
     },
     showAll: function() {
         console.log('get all Items');
-        this.todos.all();
+        this.ScrumTaskList.all();
         console.log('nr. of items:' + this.todos.length);
         //this.todos.fetch();
         //this.trigger('reload');
