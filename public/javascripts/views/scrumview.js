@@ -12,27 +12,14 @@ app.ScrumView= Backbone.View.extend({
     initialize: function () {
         this.ScrumTaskList =  new app.ScrumTaskList();
 
-        this.input = $('#new-todo');
-        this.todolist = $('#todolist');
-        this.inprogresslist = $('#inprogresslist');
-        this.donelist = $('#donelist');
-        console.log("hello2");
-
         this.listenTo(this.ScrumTaskList, 'add', this.addItem);
         this.listenTo(this.ScrumTaskList, 'all', this.render);
-        // this.listenTo(this.todos, 'reset', this.reload);
-        //this.listenTo(this.todos, 'reload', this.reload);
-        //scrumtasks = new app.ScrumTaskList();
         this.ScrumTaskList.fetch();
-        //var t = this.ScrumTaskList.create({});
-        //t.set('title', 'via collection but in the model');
-
-
 
     },
 
     addItem: function (item) {
-        var ScrumTaskView = new app.ScrumTaskView({ model: item });
+        var ScrumTaskView = new app.ScrumTaskView(item);
         $("#list-"+item.attributes.status).append(ScrumTaskView.render().el);
     },
 

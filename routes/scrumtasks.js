@@ -29,5 +29,12 @@ router.route('/').
     });
 router.route('/:scrum_taskid').
     put(function(req, res, next) {
+        var data=req.body;
+        scrumboard.edit(data);
+        var response={
+            isok:true,
+            errormessage:''
+        };
+        res.json(response);
     });
 module.exports = router;

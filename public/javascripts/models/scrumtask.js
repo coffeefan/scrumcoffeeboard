@@ -8,6 +8,6 @@ app.ScrumTask = Backbone.Model.extend({
         description:'',
         status: 1,
         cost:1,
-        name:''
+        responsible:''
     }
 });

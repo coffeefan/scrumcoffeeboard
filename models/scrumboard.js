@@ -5,11 +5,11 @@ var Scrumboard = {
     tasks: [
         {
             id: '1',
-            title: 'default 1',
+            title: 'Desgin erstellen',
             description:'',
             status: 1,
             cost:1,
-            name:''
+            responsible:'Chris'
         },
         {
             id: '2',
@@ -17,7 +17,7 @@ var Scrumboard = {
             description:'',
             status: 2,
             cost:1,
-            name:''
+            responsible:'Martin'
         },
         {
             id: '3',
@@ -25,7 +25,7 @@ var Scrumboard = {
             description:'',
             status: 1,
             cost:1,
-            name:''
+            responsible:'Claude'
         }
     ],
     last_id: 1,
@@ -84,6 +84,7 @@ var Scrumboard = {
     },
 
     allTasks: function () {
+
         return this.tasks;
     },
 

@@ -18,14 +18,17 @@ function getItems(container)
 }
 
 $(function() {
+    $('.sortable-list').each(function(index){
+       var listid=$(this).attr("id").substr(5);
+        $(this).sortable({
+            connectWith: '.sortable-list',
+            receive: function(event, ui) {
+                console.log("Neue Statusid"+listid);
+                ui.item.trigger('drop', listid);
 
-    $('.sortable-list').sortable({
-        connectWith: '.sortable-list',
-        stop: function(event, ui) {
-            var listid=$(this).closest('div').attr('id').substr(5);
-            ui.item.trigger('drop', $(this).parent().attr("id"),listid);
-
-        }
+            }
+        });
     });
+
 
 });

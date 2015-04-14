@@ -6,56 +6,48 @@ app.ScrumTaskView= Backbone.View.extend({
     template: _.template($('#item-template').html()),
 
     events: {
-        "click .toggle": "toggleDone",
-        "dblclick .view": "edit",
-        "keypress .edit": "updateOnEnter",
-        "blur .edit": "close",
         'drop' : 'drop',
-        'click #addscrumtask': 'createItem'
+        'click #addscrumtask': 'createItem',
+        "change input.title": "updateTitle",
+        "change input.description": "updateDescription",
+        "change input.responsible": "updateResponsible",
+        "change input.cost": "updateCost"
     },
 
-    drop: function(event, index,listid) {
-        console.log("saleti2"+index+this.model.attributes.title);
-        this.model.set({status: listid});
-        this.model.save();
-
-
+    drop: function(event, listid) {
+        console.log("drop"+this.scrumtask.get("id")+", Status"+listid);
+        this.scrumtask.set({status: listid});
+        this.scrumtask.save();
     },
 
-    initialize: function () {
-        this.listenTo(this.model, 'change', this.render);
-        this.model.bind("change",function(){
-            console.log("olé");
-        })
+    initialize: function (scrumtask) {
+        this.scrumtask=scrumtask;
     },
-
     render: function () {
-        this.$el.html(this.template(this.model.toJSON()));
-        //this.$el.toggleClass('done', this.model.get('done'));
-        this.input = this.$('.edit');
+        this.$el.html(this.template(this.scrumtask.toJSON()));
         return this;
     },
-    toggleDone: function () {
-        console.log('toggle model');
-        this.model.toggle();
+
+    updateTitle: function(args){
+       console.log("updateTitle"+this.scrumtask.get("id"));
+       this.scrumtask.set({title:  args.target.value});
+       this.scrumtask.save();
+       this.render();
     },
-    edit: function () {
-        this.$el.addClass("editing");
-        this.input.focus();
+    updateDescription: function(args){
+        console.log("updateDescription"+this.scrumtask.get("id"));
+        this.scrumtask.set({description:  args.target.value});
+        this.scrumtask.save();
     },
-    close: function () {
-        var value = this.input.val();
-        if (!value) {
-            this.clear();
-        } else {
-            this.model.save({title: value});
-            this.$el.removeClass("editing");
-        }
+    updateResponsible: function(args){
+        console.log("updateResponsible"+this.scrumtask.get("id"));
+        this.scrumtask.set({responsible:  args.target.value});
+        this.scrumtask.save();
     },
-    updateOnEnter: function (e) {
-        if (e.keyCode == 13) this.close();
-    },
-    createItem: function(){
-        console.log("alia");
+    updateCost: function(args){
+        console.log("updateCost"+this.scrumtask.get("id"));
+        this.scrumtask.set({cost:  args.target.value});
+        this.scrumtask.save();
     }
+
 });
