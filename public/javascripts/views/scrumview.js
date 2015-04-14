@@ -1,11 +1,11 @@
 var app = app || {};
 
 app.ScrumView= Backbone.View.extend({
-    el: $('body'),
+    el: 'body',
 
 
     events: {
-        'click #add-item': 'createItem',
+        'click #addscrumtask': 'createItem',
         'keypress #new-todo': 'createItemOnEnter'
     },
 
@@ -16,6 +16,7 @@ app.ScrumView= Backbone.View.extend({
         this.todolist = $('#todolist');
         this.inprogresslist = $('#inprogresslist');
         this.donelist = $('#donelist');
+        console.log("hello2");
 
         this.listenTo(this.ScrumTaskList, 'add', this.addItem);
         this.listenTo(this.ScrumTaskList, 'all', this.render);
@@ -51,9 +52,13 @@ app.ScrumView= Backbone.View.extend({
         this.createItem();
     },
     createItem: function () {
+        console.log("hello");
         if (!this.input.val()) return;
         this.ScrumTaskList.create({ title: this.input.val() });
         this.input.val('');
+    },
+    updateSort: function(event, model, position) {
+        console.log("updatesort");
     },
 
     showOpen: function() {
@@ -78,3 +83,5 @@ app.ScrumView= Backbone.View.extend({
         //this.trigger('reload');
     }
 });
+
+

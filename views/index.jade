@@ -5,16 +5,6 @@ block content
         h1= title
         p Welcome to #{title}
         #todoapp
-            ul.nav.nav-pills
-                li.all-pill
-                  a(href='#all') All
-
-                li.open-pill
-                  a(href='#open') Open
-
-                li.completed-pill
-                  a(href='#completed') Completed
-
             input(
                 type='text',
                 placeholder='What needs to be done?',
@@ -23,7 +13,7 @@ block content
             input(
                 type='button',
                 value='Add',
-                id='add-item'
+                id='addscrumtask'
             )
         .row
             .col-md-3
@@ -33,5 +23,5 @@ block content
             .col-md-3
                 #list-3.done.sortable-list.ui-sortable
             .col-md-3
-        
+
 

@@ -19,16 +19,13 @@ function getItems(container)
 
 $(function() {
 
-    //var itemStr = getItems('#wrapper');
-    // itemStr = 'A,B|C,D|E'
-
     $('.sortable-list').sortable({
-        connectWith: '.sortable-list'
+        connectWith: '.sortable-list',
+        stop: function(event, ui) {
+            var listid=$(this).closest('div').attr('id').substr(5);
+            ui.item.trigger('drop', $(this).parent().attr("id"),listid);
+
+        }
     });
-
-    /*$('#btn-get').click(function(){
-        alert(getItems('#example-1-2'));
-    });*/
-
 
 });

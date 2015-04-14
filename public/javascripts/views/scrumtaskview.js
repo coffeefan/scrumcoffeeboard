@@ -9,11 +9,24 @@ app.ScrumTaskView= Backbone.View.extend({
         "click .toggle": "toggleDone",
         "dblclick .view": "edit",
         "keypress .edit": "updateOnEnter",
-        "blur .edit": "close"
+        "blur .edit": "close",
+        'drop' : 'drop',
+        'click #addscrumtask': 'createItem'
+    },
+
+    drop: function(event, index,listid) {
+        console.log("saleti2"+index+this.model.attributes.title);
+        this.model.set({status: listid});
+        this.model.save();
+
+
     },
 
     initialize: function () {
         this.listenTo(this.model, 'change', this.render);
+        this.model.bind("change",function(){
+            console.log("olé");
+        })
     },
 
     render: function () {
@@ -41,5 +54,8 @@ app.ScrumTaskView= Backbone.View.extend({
     },
     updateOnEnter: function (e) {
         if (e.keyCode == 13) this.close();
+    },
+    createItem: function(){
+        console.log("alia");
     }
 });

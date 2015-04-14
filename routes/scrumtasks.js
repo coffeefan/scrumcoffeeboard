@@ -2,11 +2,14 @@ var express = require('express');
 var router = express.Router(),
     scrumboard = require('../models/scrumboard');
 
-router.route('/').
-    get(function(req, res, next) {
-        var scrumtasks = scrumboard.getAllEntries();
-        res.json(scrumtasks);
-    });
+
+
+router.param('post_id', function(req, res, next, id) {
+    var data=req.body;
+    scrumboard.edit(data);
+
+});
+
 router.route('/').
     post(function(req, res, next) {
         var data=req.body;
@@ -19,4 +22,12 @@ router.route('/').
         res.json(response);
     });
 
+router.route('/').
+    get(function(req, res, next) {
+        var posts = scrumboard.getAllEntries();
+        res.json(posts);
+    });
+router.route('/:scrum_taskid').
+    put(function(req, res, next) {
+    });
 module.exports = router;

@@ -5,7 +5,23 @@ var Scrumboard = {
     tasks: [
         {
             id: '1',
-            title: '',
+            title: 'default 1',
+            description:'',
+            status: 1,
+            cost:1,
+            name:''
+        },
+        {
+            id: '2',
+            title: 'default 2',
+            description:'',
+            status: 2,
+            cost:1,
+            name:''
+        },
+        {
+            id: '3',
+            title: 'default 3',
             description:'',
             status: 1,
             cost:1,
@@ -33,6 +49,18 @@ var Scrumboard = {
         this.tasks.push(data);
         return data;
     },
+
+    edit: function (data) {
+        var idLives=false;
+        for (var i = 0; i < this.tasks.length; i++) {
+            if (this.tasks[i].id == data.id) {
+                this.tasks[i]=data;
+                idLives=true;
+            }
+        }
+
+    },
+
 
     find: function (id) {
         for (var i = 0; i < this.tasks.length; i++) {
@@ -93,5 +121,10 @@ exports.remove = function (id) {
 exports.add = function (data) {
     return Scrumboard.add(data);
 };
+
+exports.edit = function (data) {
+    return Scrumboard.edit(data);
+};
+
 
 
