@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var posts = require('./routes/posts');
 var scrumtasks = require('./routes/scrumtasks');
 
 var app = express();
@@ -24,7 +23,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/posts', posts);
 app.use('/scrumtasks', scrumtasks);
 
 

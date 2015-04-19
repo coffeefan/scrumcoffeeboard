@@ -5,7 +5,7 @@ app.ScrumView= Backbone.View.extend({
 
 
     events: {
-        'click #addscrumtask': 'createItem',
+        'click .addscrumtask': 'createItem',
         'keypress #new-todo': 'createItemOnEnter'
     },
 
@@ -40,34 +40,12 @@ app.ScrumView= Backbone.View.extend({
     },
     createItem: function () {
         console.log("hello");
-        if (!this.input.val()) return;
-        this.ScrumTaskList.create({ title: this.input.val() });
-        this.input.val('');
-    },
-    updateSort: function(event, model, position) {
-        console.log("updatesort");
-    },
-
-    showOpen: function() {
-        console.log('get open Items');
-        this.ScrumTaskList.open();
-        console.log('nr. of items:' + this.todos.length);
-        // this.todos.fetch();
-        //this.trigger('reload');
-    },
-    showCompleted: function() {
-        console.log('get completed Items');
-        this.ScrumTaskList.completed();
-        console.log('nr. of items:' + this.todos.length);
-        // this.todos.fetch();
-        //this.trigger('reload');
-    },
-    showAll: function() {
-        console.log('get all Items');
-        this.ScrumTaskList.all();
-        console.log('nr. of items:' + this.todos.length);
-        //this.todos.fetch();
-        //this.trigger('reload');
+        this.ScrumTaskList.create({
+            title:  $('#new .title').val(),
+            description:  $('#new .description').val(),
+            responsible:  $('#new .responsible').val(),
+            cost:  $('#new .cost').val(),
+            status:1});
     }
 });
 

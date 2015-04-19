@@ -17,6 +17,7 @@ function getItems(container)
     return columns.join('|');
 }
 
+//Global JQUERY dragable functions
 $(function() {
     $('.sortable-list').each(function(index){
        var listid=$(this).attr("id").substr(5);
@@ -25,7 +26,6 @@ $(function() {
             receive: function(event, ui) {
                 console.log("Neue Statusid"+listid);
                 ui.item.trigger('drop', listid);
-
             }
         });
     });

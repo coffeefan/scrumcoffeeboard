@@ -8,7 +8,7 @@ var Scrumboard = {
             title: 'Desgin erstellen',
             description:'',
             status: 1,
-            cost:1,
+            cost:3,
             responsible:'Chris'
         },
         {
@@ -16,7 +16,7 @@ var Scrumboard = {
             title: 'default 2',
             description:'',
             status: 2,
-            cost:1,
+            cost:5,
             responsible:'Martin'
         },
         {
@@ -24,7 +24,7 @@ var Scrumboard = {
             title: 'default 3',
             description:'',
             status: 1,
-            cost:1,
+            cost:8,
             responsible:'Claude'
         }
     ],
@@ -103,8 +103,6 @@ exports.getAllEntries = function () {
 exports.clearAllEntries = function () {
     return Scrumboard.clearAllEntries();
 };
-
-
 
 exports.create = function (data) {
     return Scrumboard.add(data);

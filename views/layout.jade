@@ -20,19 +20,23 @@ html
                   </div>
                   <div class="form-group">
                       <label for="exampleInputFile">Description</label>
-                      <textarea class="form-control description" rows="3"></textarea>
+                      <textarea class="form-control description" rows="3"><%= description%></textarea>
                   </div>
                   <div class="form-group">
                     <label>Verantwortliche(r)</label>
                     <input type="text" class="form-control responsible" value="<%= responsible %>" />
                   </div>
-
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Check me out
-                    </label>
+                  <div class="form-group">
+                      <label>Kosten</label>
+                      <select class="form-control sbcost" id="sbcost-<%= id %>">
+                          <option value="1" <% if (cost== 1) { %>selected="selected"<% } %>>1</option>
+                          <option value="2" <% if (cost== 2) { %>selected="selected"<% } %>>2</option>
+                          <option value="3" <% if (cost== 3) { %>selected="selected"<% } %>>3</option>
+                          <option value="5" <% if (cost== 5) { %>selected="selected"<% } %>>5</option>
+                          <option value="8" <% if (cost== 8) { %>selected="selected"<% } %>>8</option>
+                       </select>
                   </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <a class="btn btn-default loeschen">Löschen</a>
                 </form>
               </div>
               </div>

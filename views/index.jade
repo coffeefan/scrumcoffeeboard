@@ -4,17 +4,33 @@ block content
     div.container
         h1= title
         p Welcome to #{title}
-        #todoapp
-            input(
-                type='text',
-                placeholder='What needs to be done?',
-                id='new-todo'
-            )
-            input(
-                type='button',
-                value='Add',
-                id='addscrumtask'
-            )
+            #accordion-0.panel-group.view.sortable-item(role='tablist', aria-multiselectable='true')
+                .panel.panel-default
+                    #headingOne.panel-heading(role='tab')
+                        h4.panel-title
+                            a(data-toggle='collapse', data-parent='#accordion-0', href='#new', aria-expanded='false', aria-controls='box-1') Neu
+
+                #new.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
+                    .panel-body
+                        form
+                            .form-group
+                                label Title
+                                input.form-control.title(type='text')
+                            .form-group
+                                label(for='exampleInputFile') Description
+                                textarea.form-control.description(rows='3')
+                                .form-group
+                                label Verantwortliche(r)
+                                input.form-control.responsible(type='text')
+                            .form-group
+                                label Kosten
+                                select#sbcost-2.form-control.sbcost
+                                    option(value='1') 1
+                                    option(value='2', selected='selected') 2
+                                    option(value='3') 3
+                                    option(value='5') 5
+                                    option(value='8') 8
+                            a.btn.btn-default.addscrumtask Erstellen
         .row
             .col-md-4
                 #list-1.todo.sortable-list.ui-sortable

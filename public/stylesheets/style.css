@@ -47,6 +47,8 @@ p {margin-bottom: 1em;}
 /**********************
  * ScrumTask          *
  **********************/
+
+
 .sortable-list {
 	background-color: #F93;
 	list-style: none;
@@ -73,4 +75,19 @@ p {margin-bottom: 1em;}
 }
 .panel-heading a.collapsed:after {
     content:"\e080";
+}
+
+#accordion-0{
+    width:33%;
+
+}
+
+#accordion-0.sortable-item{
+    border:none;
+}
+
+#accordion-0 .panel-default>.panel-heading, #accordion-0 .panel-default{
+    border:none;
+    background:none;
+    box-shadow:none;
 }

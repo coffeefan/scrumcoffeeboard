@@ -7,11 +7,12 @@ app.ScrumTaskView= Backbone.View.extend({
 
     events: {
         'drop' : 'drop',
-        'click #addscrumtask': 'createItem',
+        'click .loeschen': 'deleteSelf',
         "change input.title": "updateTitle",
         "change input.description": "updateDescription",
         "change input.responsible": "updateResponsible",
-        "change input.cost": "updateCost"
+        "change .sbcost": "updateCost"
+
     },
 
     drop: function(event, listid) {
@@ -21,6 +22,7 @@ app.ScrumTaskView= Backbone.View.extend({
     },
 
     initialize: function (scrumtask) {
+
         this.scrumtask=scrumtask;
     },
     render: function () {
@@ -48,6 +50,11 @@ app.ScrumTaskView= Backbone.View.extend({
         console.log("updateCost"+this.scrumtask.get("id"));
         this.scrumtask.set({cost:  args.target.value});
         this.scrumtask.save();
+    },
+    deleteSelf: function(){
+        this.scrumtask.destroy();
+        this.parent.initialize();
     }
+
 
 });
