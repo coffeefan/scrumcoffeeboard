@@ -9,7 +9,7 @@ describe("Scrumboard", function() {
         expect(app.ScrumTask).toBeDefined();
     });
 
-    it("is a collection of ScrumTask models, save called", function() {
+    it("is a collection of ScrumTask models", function() {
         var spy = spyOn(Backbone.Model.prototype, 'save');
         expect(new app.ScrumTaskList().create({}) instanceof app.ScrumTask).toBe(true)
 
@@ -45,7 +45,20 @@ describe("Scrumboard", function() {
         expect(spy).toHaveBeenCalled();
     });
 
-    it("ScrumTask Status 'done' in List done", function() {
+    it("Cost changes makes Put/Save REST API call", function() {
+        var spy = spyOn(Backbone.Model.prototype, 'save');
+        var scrumtask=  new app.ScrumTask();
+        var scrumTaskView=new app.ScrumTaskView(scrumtask);
+        scrumTaskView.parent={};
+        scrumTaskView.parent.initialize=function(){};
+        var args={}
+        args.target={}
+        args.target.value="1"
+        scrumTaskView.updateCost(args);
+        expect(spy).toHaveBeenCalled();
+    });
+
+    it("ScrumTask Status 'done' is in List done", function() {
         var scrumtask=  new app.ScrumTask();
         scrumtask.attributes.title="is done task";
         scrumtask.attributes.status=3;
@@ -53,7 +66,7 @@ describe("Scrumboard", function() {
 
     });
 
-    it("ScrumTask Status 'create' in List in create", function() {
+    it("ScrumTask Status 'create' is in List in create", function() {
         var scrumtask=  new app.ScrumTask();
         scrumtask.attributes.title="is create task";
         scrumtask.attributes.status=1;
@@ -61,16 +74,13 @@ describe("Scrumboard", function() {
 
     });
 
-    it("ScrumTask Status 'in progress' in List in progress", function() {
+    it("ScrumTask Status 'in progress' is in List in progress", function() {
         var scrumtask=  new app.ScrumTask();
         scrumtask.attributes.title="is in progress task";
         scrumtask.attributes.status=2;
         expect(app.ScrumView.addItem(scrumtask)).toBe("#list-2");
 
     });
-
-
-
 
 });
 
