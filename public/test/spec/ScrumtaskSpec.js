@@ -16,7 +16,7 @@ describe("TodoList", function() {
     scrumtask.title="is done task";
     scrumtask.status=3;
     new app.ScrumTaskView(scrumtask);*/
-    //expect(true);
+    expect(true);
   });
 });
 
