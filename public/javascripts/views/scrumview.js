@@ -48,7 +48,10 @@ app.ScrumView= Backbone.View.extend({
             status:1});
 
         this.initialize();
-
+        $('#new .title').val("");
+        $('#new .description').val("");
+        $('#new .responsible').val("");
+        $('#new .sbcost').val("");
     }
 });
 
