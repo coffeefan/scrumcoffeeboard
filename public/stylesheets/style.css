@@ -62,7 +62,6 @@ p {margin-bottom: 1em;}
 }
 .sortable-item {
 	background-color: #FFF;
-	border: 1px solid #000;
 	cursor: move;
 	display: block;
 	font-weight: bold;

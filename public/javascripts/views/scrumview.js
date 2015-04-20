@@ -21,6 +21,7 @@ app.ScrumView= Backbone.View.extend({
     addItem: function (item) {
         var ScrumTaskView = new app.ScrumTaskView(item);
         $("#list-"+item.attributes.status).append(ScrumTaskView.render().el);
+        return "#list-"+item.attributes.status;
     },
 
     addAll: function () {

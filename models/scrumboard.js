@@ -5,24 +5,24 @@ var Scrumboard = {
     tasks: [
         {
             id: '1',
-            title: 'Desgin erstellen',
-            description:'',
+            title: 'PSD erstellen',
+            description:'Anhand der Notizen soll eine Photoshop-Vorlage erstellt werden',
             status: 1,
             cost:3,
             responsible:'Chris'
         },
         {
             id: '2',
-            title: 'default 2',
-            description:'',
+            title: 'CSS umsetzen',
+            description:'Das PSD soll in ein responsives HTML/CSS umgesetzt werden',
             status: 2,
             cost:5,
             responsible:'Martin'
         },
         {
             id: '3',
-            title: 'default 3',
-            description:'',
+            title: 'ERD/DB-Design',
+            description:'Der Shop soll als relationales DB-Design umgesetzt werden',
             status: 1,
             cost:8,
             responsible:'Claude'

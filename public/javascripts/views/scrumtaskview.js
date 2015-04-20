@@ -3,13 +3,13 @@ var app = app || {};
 app.ScrumTaskView= Backbone.View.extend({
     tagName: 'li',
 
-    template: _.template($('#item-template').html()),
+    template: _.template(app.scrumtaskTemplateString),
 
     events: {
         'drop' : 'drop',
         'click .loeschen': 'deleteSelf',
         "change input.title": "updateTitle",
-        "change input.description": "updateDescription",
+        "change textarea.description": "updateDescription",
         "change input.responsible": "updateResponsible",
         "change .sbcost": "updateCost"
 
@@ -34,11 +34,11 @@ app.ScrumTaskView= Backbone.View.extend({
        console.log("updateTitle"+this.scrumtask.get("id"));
        this.scrumtask.set({title:  args.target.value});
        this.scrumtask.save();
-       this.render();
     },
     updateDescription: function(args){
         console.log("updateDescription"+this.scrumtask.get("id"));
-        this.scrumtask.set({description:  args.target.value});
+
+        this.scrumtask.set({description:  $(args.target).val()});
         this.scrumtask.save();
     },
     updateResponsible: function(args){
