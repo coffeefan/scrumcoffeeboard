@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var scrumpage = require('./routes/scrumpage');
 var scrumtasks = require('./routes/scrumtasks');
+var about = require('./routes/about');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', scrumpage);
 app.use('/scrumtasks', scrumtasks);
+app.use('/about', about);
 
 
 
