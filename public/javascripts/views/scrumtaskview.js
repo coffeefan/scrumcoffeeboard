@@ -53,7 +53,7 @@ app.ScrumTaskView= Backbone.View.extend({
     },
     deleteSelf: function(){
         this.scrumtask.destroy();
-        this.parent.initialize();
+        app.ScrumView.initialize();
     }
 
 

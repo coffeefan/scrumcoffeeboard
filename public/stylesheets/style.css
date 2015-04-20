@@ -1,9 +1,7 @@
 /**********************
  * General            *
  **********************/
-html,body{
- height:101%;
-}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;

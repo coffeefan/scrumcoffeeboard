@@ -10,6 +10,7 @@ app.ScrumView= Backbone.View.extend({
     },
 
     initialize: function () {
+        $(".sortable-list").html("");
         this.ScrumTaskList =  new app.ScrumTaskList();
 
         this.listenTo(this.ScrumTaskList, 'add', this.addItem);
@@ -31,8 +32,6 @@ app.ScrumView= Backbone.View.extend({
 
     reload: function() {
         console.log('reloading');
-        this.list.empty(); // clear the DOM element
-        this.addAll();
     },
 
     createItemOnEnter: function (e) {
@@ -45,8 +44,11 @@ app.ScrumView= Backbone.View.extend({
             title:  $('#new .title').val(),
             description:  $('#new .description').val(),
             responsible:  $('#new .responsible').val(),
-            cost:  $('#new .cost').val(),
+            cost:  $('#new .sbcost').val(),
             status:1});
+
+        this.initialize();
+
     }
 });
 
