@@ -28,7 +28,7 @@ var Scrumboard = {
             responsible:'Claude'
         }
     ],
-    last_id: 1,
+    last_id: 3,
 
     getNextId: function () {
         this.last_id += 1;
