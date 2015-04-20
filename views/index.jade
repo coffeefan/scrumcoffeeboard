@@ -1,15 +1,14 @@
 extends layout
-
 block content
+
     div.container
-        h1= title
-        p Welcome to #{title}
+        h1 Scrumboard
+        p
             #accordion-0.panel-group.view.sortable-item(role='tablist', aria-multiselectable='true')
                 .panel.panel-default
                     #headingOne.panel-heading(role='tab')
                         h4.panel-title
-                            a(data-toggle='collapse', data-parent='#accordion-0', href='#new', aria-expanded='false', aria-controls='box-1') Neu
-
+                            a.btn.btn-default(data-toggle='collapse', data-parent='#accordion-0', href='#new', aria-expanded='false', aria-controls='box-1') Neu
                 #new.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
                     .panel-body
                         form
@@ -33,10 +32,13 @@ block content
                             a.btn.btn-default.addscrumtask Erstellen
         .row
             .col-md-4
+                h3 Todo
                 #list-1.todo.sortable-list.ui-sortable
             .col-md-4
+                h3 In Progress
                 #list-2.inprogress.sortable-list.ui-sortable
             .col-md-4
+                h3 Done
                 #list-3.done.sortable-list.ui-sortable
 
 
