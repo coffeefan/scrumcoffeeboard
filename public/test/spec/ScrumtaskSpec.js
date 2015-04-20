@@ -1,4 +1,4 @@
-describe("TodoList", function() {
+describe("Scrumboard", function() {
     var spyCard;
 
     beforeEach(function () {
@@ -12,10 +12,17 @@ describe("TodoList", function() {
     it("is a collection of ScrumTask models, save called", function() {
         var spy = spyOn(Backbone.Model.prototype, 'save');
         expect(new app.ScrumTaskList().create({}) instanceof app.ScrumTask).toBe(true)
-        expect(spy).toHaveBeenCalled();
+
     });
 
-    it("ScrumTask delete call REST API, by delete", function() {
+    it("new ScrumTask-Object creates a POST REST API call", function() {
+        var spy = spyOn(Backbone.Model.prototype, 'save');
+        new app.ScrumTaskList().create({});
+        expect(spy).toHaveBeenCalled();
+
+    });
+
+    it("delete-Method makes a Delete REST API call", function() {
         var spy = spyOn(Backbone.Model.prototype, 'destroy');
         var scrumtask=  new app.ScrumTask();
         var scrumTaskView=new app.ScrumTaskView(scrumtask);
@@ -25,7 +32,7 @@ describe("TodoList", function() {
         expect(spy).toHaveBeenCalled();
     });
 
-    it("ScrumTask put(save) call REST API by change", function() {
+    it("Title changes makes Put/Save REST API call", function() {
         var spy = spyOn(Backbone.Model.prototype, 'save');
         var scrumtask=  new app.ScrumTask();
         var scrumTaskView=new app.ScrumTaskView(scrumtask);
@@ -38,7 +45,7 @@ describe("TodoList", function() {
         expect(spy).toHaveBeenCalled();
     });
 
-    it("done() in List done", function() {
+    it("ScrumTask Status 'done' in List done", function() {
         var scrumtask=  new app.ScrumTask();
         scrumtask.attributes.title="is done task";
         scrumtask.attributes.status=3;
@@ -46,17 +53,17 @@ describe("TodoList", function() {
 
     });
 
-    it("todo() in List todo", function() {
+    it("ScrumTask Status 'create' in List in create", function() {
         var scrumtask=  new app.ScrumTask();
-        scrumtask.attributes.title="is done task";
+        scrumtask.attributes.title="is create task";
         scrumtask.attributes.status=1;
         expect(app.ScrumView.addItem(scrumtask)).toBe("#list-1");
 
     });
 
-    it("inprogress() in List inprogress", function() {
+    it("ScrumTask Status 'in progress' in List in progress", function() {
         var scrumtask=  new app.ScrumTask();
-        scrumtask.attributes.title="is done task";
+        scrumtask.attributes.title="is in progress task";
         scrumtask.attributes.status=2;
         expect(app.ScrumView.addItem(scrumtask)).toBe("#list-2");
 
